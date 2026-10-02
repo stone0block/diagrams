@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Working name. The real name and domain are decided at Stage 1 and set here.
+  "name": "diagrams-site",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./public"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "diagrams",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    // Public origin used to build links returned by save_diagram, e.g. "https://example.com".
+    // Empty: the origin of the incoming request is used.
+    "PUBLIC_BASE_URL": ""
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ES2022"
+    ]
+  },
+  "include": [
+    "*.ts",
+    "../src/validate.ts",
+    "../src/id.ts"
+  ]
+}
