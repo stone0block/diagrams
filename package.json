@@ -5,21 +5,27 @@
   "type": "module",
   "description": "Site and MCP server for the diagrams plugin (working name, final name TBD)",
   "scripts": {
-    "vendor": "node scripts/vendor-mermaid.mjs",
-    "dev": "npm run vendor && wrangler d1 migrations apply DB --local && wrangler dev",
-    "deploy": "npm run vendor && wrangler deploy",
+    "build:editor": "node scripts/build-editor.mjs",
+    "dev": "npm run build:editor && wrangler d1 migrations apply DB --local && wrangler dev",
+    "deploy": "npm run build:editor && wrangler deploy",
     "types": "wrangler types",
-    "typecheck": "wrangler types && tsc --noEmit && tsc --noEmit -p test",
+    "typecheck": "wrangler types && tsc --noEmit && tsc --noEmit -p test && tsc --noEmit -p editor",
     "test": "node --test \"test/*.test.ts\""
   },
   "dependencies": {
+    "@excalidraw/excalidraw": "0.18.1",
+    "@excalidraw/mermaid-to-excalidraw": "2.2.2",
     "@modelcontextprotocol/server": "2.0.0",
     "agents": "0.25.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "zod": "4.6.5"
   },
   "devDependencies": {
     "@types/node": "26.6.4",
-    "mermaid": "12.1.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "esbuild": "0.28.2",
     "typescript": "7.0.2",
     "wrangler": "4.147.0"
   }
